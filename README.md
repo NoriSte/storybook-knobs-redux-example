@@ -15,4 +15,15 @@ npm i && npm run storybook
 Enjoy
 ![Storybook Knobs](assets/storybook-knobs.png)
 
-See the [story source code](src/stories/index.js)
+See the [story source code](src/stories/index.js#L16-L49)
+
+### Why should I control the Redux state from Storybook Knobs?
+
+That's just a demo, if you think to do something similar, be aware that
+
+- a Redux connected container should consume a pure component. A pure component doesn't need an
+  the container to be added to Storybook
+- if you have a container with a really high number of prop transformations, probably you should
+  rethink your components hierarchy creating some simpler, single-responsibility, components
+- if you don't need to let the user control the state, you could just use the second argument
+  (`preloadedState`) of the [createStore API](https://redux.js.org/api/createstore#createstorereducer-preloadedstate-enhancer)
